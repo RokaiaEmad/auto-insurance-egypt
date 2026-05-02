@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Auto Insurance Egypt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C5993A;
+      --gold-light: #F0DFB0;
+      --gold-dark: #8A6A1F;
+      --navy: #0D1B2A;
+      --navy-mid: #1A2E44;
+      --navy-soft: #243650;
+      --cream: #FAF7F2;
+      --cream-2: #F2EDE4;
+      --text: #1A1A1A;
+      --text-muted: #5A5A6A;
+      --text-light: #8A8A9A;
+      --white: #FFFFFF;
+      --border-soft: rgba(0,0,0,0.07);
+      --shadow: 0 4px 24px rgba(13,27,42,0.08);
+      --shadow-card: 0 2px 12px rgba(13,27,42,0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(197,153,58,0.25);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--white); font-weight: 400; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-active { color: var(--gold) !important; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      padding: 5rem 2.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(197,153,58,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse at 70% 20%, rgba(197,153,58,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(197,153,58,0.15);
+      border: 1px solid rgba(197,153,58,0.35);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* MAIN CONTENT */
+    .content-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    /* WHO WE ARE */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-weight: 300;
+      max-width: 680px;
+    }
+
+    /* WHO WE ARE LAYOUT */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .who-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .who-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(197,153,58,0.15) 0%, transparent 70%);
+    }
+
+    .who-visual-icon {
+      font-size: 4rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .who-visual-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .who-visual-sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.5rem;
+      font-weight: 300;
+      position: relative;
+    }
+
+    /* VALUES CARDS */
+    .values-section { margin-bottom: 5rem; }
+
+    .values-section .section-title { text-align: center; margin-bottom: 0.5rem; }
+    .values-section .section-label { text-align: center; }
+    .values-section .section-intro {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(197,153,58,0.15), rgba(197,153,58,0.05));
+      border: 1px solid rgba(197,153,58,0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .value-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .value-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* TEAM SECTION */
+    .team-section { margin-bottom: 3rem; }
+
+    .team-header { text-align: center; margin-bottom: 2.5rem; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1.75rem 1.25rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .team-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(197,153,58,0.12) 0%, transparent 70%);
+    }
+
+    .cta-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .cta-strip p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 13px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      position: relative;
+    }
+
+    .cta-btn:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      padding: 3rem 2.5rem 2rem;
+      margin-top: 0;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-brand .logo { font-size: 1.3rem; margin-bottom: 0.75rem; display: block; }
+
+    .footer-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .who-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="index.html">Auto Insurance Customer Service <span>Egypt</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about_us.html" class="nav-active">About Us</a></li>
+      <li><a href="how_it_works.html">How It Works</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="hero-badge">Graduation Project 2025</div>
+    <h1>About <em>Our Team</em></h1>
+    <p>A passionate group of students on a mission to make car insurance in Egypt simpler, smarter, and more transparent.</p>
+  </div>
+
+  <div class="content-wrap">
+
+    <!-- WHO WE ARE -->
+    <div class="who-grid">
+      <div>
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Students Building <em style="font-style:normal;color:var(--gold);">Real Solutions</em></h2>
+        <p class="section-body">
+          We are a team of students working on a graduation project aimed at simplifying car insurance selection in Egypt. Our platform helps users compare insurance companies, prices, and coverage easily, making the decision-making process faster and more efficient.
+        </p>
+        <p class="section-body" style="margin-top:1rem;">
+          We believe that every driver in Egypt deserves clear, honest, and accessible information — without the complexity or confusion that often comes with financial products.
+        </p>
+      </div>
+      <div class="who-visual">
+        <div class="who-visual-icon">🎓</div>
+        <div class="who-visual-text">Graduation Project<br>2025 / 2026</div>
+        <div class="who-visual-sub">Faculty of commerce Georgia program</div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-section">
+      <div class="section-label">What Drives Us</div>
+      <h2 class="section-title">Our Core Values</h2>
+      <p class="section-intro">Everything we build is grounded in these three principles.</p>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <div class="value-title">Transparency</div>
+          <div class="value-desc">We present insurance data clearly and honestly — no hidden fees, no misleading comparisons, just straightforward information.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <div class="value-title">Efficiency</div>
+          <div class="value-desc">We built this platform so users can compare all major insurers in minutes, saving time and eliminating unnecessary back-and-forth.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Accessibility</div>
+          <div class="value-desc">Insurance information should be available to everyone. Our platform is designed to be easy to use for all Egyptians, regardless of background.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CTA -->
+    <div class="cta-strip">
+      <h2>Ready to Compare?</h2>
+      <p>Start browsing Egypt's top car insurance providers — all in one place.</p>
+      <a href="index.html" class="cta-btn">Go to the Comparison Tool →</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Auto Insurance Customer Service <span>Egypt</span></span>
+        <p class="footer-desc">A graduation project aimed at simplifying car insurance selection in Egypt. Compare insurance companies, prices, and coverage easily.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="how_it_works.html">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Top Companies</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Allianz Egypt</a></li>
+          <li><a href="index.html">AXA Egypt</a></li>
+          <li><a href="index.html">Misr Insurance</a></li>
+          <li><a href="index.html">GIG Egypt</a></li>
+          <li><a href="index.html">Royal Insurance</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

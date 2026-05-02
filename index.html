@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Insurance Egypt — Insurance Comparison</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold: #C5993A;
+      --gold-light: #F0DFB0;
+      --gold-dark: #8A6A1F;
+      --navy: #0D1B2A;
+      --navy-mid: #1A2E44;
+      --navy-soft: #243650;
+      --cream: #FAF7F2;
+      --cream-2: #F2EDE4;
+      --text: #1A1A1A;
+      --text-muted: #5A5A6A;
+      --text-light: #8A8A9A;
+      --white: #FFFFFF;
+      --border: rgba(197, 153, 58, 0.18);
+      --border-soft: rgba(0, 0, 0, 0.07);
+      --shadow: 0 4px 24px rgba(13, 27, 42, 0.08);
+      --shadow-card: 0 2px 12px rgba(13, 27, 42, 0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: var(--navy);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(197, 153, 58, 0.25);
+    }
+
+    nav a {
+  text-decoration: none;
+}
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      padding: 6rem 2.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(197, 153, 58, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse at 70% 20%, rgba(197, 153, 58, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(197, 153, 58, 0.15);
+      border: 1px solid rgba(197, 153, 58, 0.35);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--gold); }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin-inline: auto;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .search-bar {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      flex-wrap: wrap;
+    }
+
+    .search-bar input,
+    .search-bar select {
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      flex: 1;
+      min-width: 130px;
+    }
+
+    .search-bar input:focus,
+    .search-bar select:focus { border-color: var(--gold); }
+
+    .search-bar button {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 11px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .search-bar button:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1.5rem 2.5rem;
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(197, 153, 58, 0.15);
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .sidebar {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: 88px;
+    }
+
+    .sidebar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .filter-section { margin-bottom: 1.5rem; }
+
+    .filter-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .filter-section select,
+    .filter-section input[type="range"] {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .price-range-display {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .check-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .apply-btn {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .apply-btn:hover { background: var(--gold); color: var(--navy); }
+
+    .reset-btn {
+      width: 100%;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.2s;
+    }
+
+    .reset-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .results-count { font-size: 0.9rem; color: var(--text-muted); }
+    .results-count strong { color: var(--navy); font-weight: 600; }
+
+    .sort-select {
+      padding: 8px 14px;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .cards-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .company-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 0;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .company-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .company-card.featured { border-color: var(--gold); border-width: 1.5px; }
+
+    .featured-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .featured-badge::before { content: '★'; font-size: 0.65rem; }
+
+    .card-body {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .company-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .company-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    /* Rate badge */
+    .rate-badge {
+      display: inline-block;
+      background: rgba(197,153,58,0.12);
+      border: 1px solid rgba(197,153,58,0.35);
+      color: var(--gold-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .coverage-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 50px;
+      border: 1px solid;
+    }
+
+    .tag-comprehensive { background: #EEF7ED; color: #2E7D32; border-color: #A5D6A7; }
+    .tag-third { background: #FFF3E0; color: #E65100; border-color: #FFCC80; }
+    .tag-fire { background: #FCE4EC; color: #AD1457; border-color: #F48FB1; }
+    .tag-theft { background: #E8EAF6; color: #283593; border-color: #9FA8DA; }
+    .tag-accident { background: #E0F2F1; color: #00695C; border-color: #80CBC4; }
+
+    .rating-block { text-align: center; min-width: 80px; }
+    .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+    .rating-num { font-size: 1.3rem; font-weight: 600; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .rating-count { font-size: 0.72rem; color: var(--text-light); }
+
+    .price-block { text-align: right; min-width: 150px; }
+    .price-from { font-size: 0.72rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+    .price-amount { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .price-period { font-size: 0.78rem; color: var(--text-muted); }
+
+    .price-cta {
+      display: block;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 10px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .price-cta:hover { background: var(--gold); color: var(--navy); }
+
+    .card-details {
+      border-top: 1px solid var(--border-soft);
+      padding: 1.25rem 1.5rem;
+      background: var(--cream);
+      display: none;
+    }
+
+    .card-details.open { display: block; }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .detail-item-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .detail-item-value { font-size: 0.875rem; color: var(--navy); font-weight: 500; }
+
+    .terms-box {
+      background: var(--white);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .terms-box strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 27, 42, 0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      max-width: 580px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--cream-2);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover { background: var(--gold); color: var(--white); }
+
+    .modal-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .modal-subtitle { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
+
+    .modal-section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+
+    .modal-detail { background: var(--cream); border-radius: var(--radius-sm); padding: 12px; }
+    .modal-detail-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); margin-bottom: 4px; }
+    .modal-detail-value { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+
+    .modal-terms {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      line-height: 1.8;
+      list-style: none;
+    }
+
+    .modal-terms li { padding: 4px 0; padding-left: 16px; position: relative; }
+    .modal-terms li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
+
+    .modal-get-btn {
+      display: block;
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .modal-get-btn:hover { background: var(--gold); color: var(--navy); }
+
+    footer {
+      background: var(--navy);
+      padding: 3rem 2.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-brand .logo { font-size: 1.3rem; margin-bottom: 0.75rem; display: block; }
+    .footer-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.45); line-height: 1.7; font-weight: 300; }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-left: 3px solid var(--gold);
+      box-shadow: var(--shadow);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 2000;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    .compare-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      border-top: 2px solid var(--gold);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+      z-index: 200;
+    }
+
+    .compare-bar.show { transform: translateY(0); }
+    .compare-items { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .compare-pill {
+      background: rgba(197, 153, 58, 0.15);
+      border: 1px solid rgba(197, 153, 58, 0.3);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .compare-pill-remove { cursor: pointer; background: none; border: none; color: inherit; }
+
+    .compare-btn-bar {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .compare-btn-bar:hover { background: var(--gold-dark); color: var(--white); }
+
+    .compare-modal {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 900px;
+      width: 95%;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin-top: 1rem; }
+    .compare-table th { background: var(--navy); color: var(--white); padding: 12px 16px; text-align: left; font-weight: 500; font-size: 0.85rem; }
+    .compare-table th:first-child { border-radius: 8px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 8px 0 0; }
+    .compare-table td { padding: 11px 16px; border-bottom: 1px solid var(--border-soft); color: var(--text); }
+    .compare-table tr:nth-child(even) td { background: var(--cream); }
+    .compare-table td:first-child { font-weight: 500; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .check-yes { color: #2E7D32; font-weight: 600; }
+    .check-no { color: #C62828; font-weight: 600; }
+
+    .add-compare-btn {
+      background: transparent;
+      border: 1px solid rgba(197, 153, 58, 0.3);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      margin-top: 6px;
+    }
+
+    .add-compare-btn:hover, .add-compare-btn.added { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+    @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .stat {
+    flex: 1 1 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar input,
+  .search-bar select,
+  .search-bar button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .company-logo { order: 1; margin: 0 auto; }
+  .company-info { order: 2; }
+  .rating-block { order: 3; }
+  .price-block { order: 4; }
+}
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    padding: 2rem 1rem;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="logo" href="index.html">Auto Insurance Customer Service <span>Egypt</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about_us.html" class="nav-active">About Us</a></li>
+      <li><a href="how_it_works.html">How It Works</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">Egypt's #1 Insurance Comparison Platform</div>
+    <h1>Find the <em>Best Car Insurance</em> in Egypt</h1>
+    <p>Compare policies from 9 top-rated insurers. Save up to 40% on your premium in minutes.</p>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Your car model (e.g. Toyota Corolla 2021)">
+      <select>
+        <option>Coverage type</option>
+        <option>Comprehensive</option>
+        <option>Third Party</option>
+        <option>Fire & Theft</option>
+      </select>
+      <select>
+        <option>Budget range</option>
+        <option>Under 3,000 EGP</option>
+        <option>3,000 – 6,000 EGP</option>
+        <option>6,000 – 10,000 EGP</option>
+        <option>10,000+ EGP</option>
+      </select>
+      <button onclick="heroSearch();showToast('Searching for the best policies...')">Compare Now →</button>
+    </div>
+  </section>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Insurance Partners</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Policy Plans</div></div>
+    <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Satisfied Customers</div></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Claims Support</div></div>
+  </div>
+
+  <main>
+    <aside class="sidebar">
+      <div class="sidebar-title">🔍 Filter Policies</div>
+
+      <div class="filter-section">
+        <label class="filter-label">Coverage Type</label>
+        <select id="filterCoverage" onchange="applyFilters()">
+          <option value="all">All Coverage Types</option>
+          <option value="comprehensive">Comprehensive</option>
+          <option value="third">Third Party</option>
+          <option value="fire">Fire & Theft</option>
+          <option value="theft">Theft</option>
+          <option value="accident">Personal Accident</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Max Annual Premium</label>
+        <input type="range" min="1000" max="15000" value="15000" step="500" id="priceRange"
+          oninput="updatePrice(this); applyFilters()">
+        <div class="price-range-display">
+          <span>1,000 EGP</span>
+          <span id="priceDisplay">15,000 EGP</span>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Min Star Rating</label>
+        <select id="filterRating" onchange="applyFilters()">
+          <option value="0">Any Rating</option>
+          <option value="4">4★ & above</option>
+          <option value="4.5">4.5★ & above</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Features Included</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" id="chk_roadside" onchange="applyFilters()"> Roadside Assistance</label>
+          <label class="check-item"><input type="checkbox" id="chk_ncd" onchange="applyFilters()"> No-Claim Discount</label>
+          <label class="check-item"><input type="checkbox" id="chk_medical" onchange="applyFilters()"> Medical Expenses</label>
+        </div>
+      </div>
+
+      <button class="reset-btn" onclick="resetFilters()">Reset All</button>
+    </aside>
+
+    <section class="results-area">
+      <div class="results-header">
+        <div class="results-count">Showing <strong>9 companies</strong> — 40+ policies available</div>
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+          <option value="match">Sort: Best Match</option>
+          <option value="price_asc">Sort: Price (Low to High)</option>
+          <option value="price_desc">Sort: Price (High to Low)</option>
+          <option value="rating">Sort: Highest Rating</option>
+        </select>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Auto Insurance Customer Service <span>Egypt</span></span>
+        <p class="footer-desc">A graduation project aimed at simplifying car insurance selection in Egypt. Compare insurance companies, prices, and coverage easily.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="how_it_works.html">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Top Companies</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Allianz Egypt</a></li>
+          <li><a href="index.html">AXA Egypt</a></li>
+          <li><a href="index.html">Misr Insurance</a></li>
+          <li><a href="index.html">GIG Egypt</a></li>
+          <li><a href="index.html">Royal Insurance</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="compare-bar" id="compareBar">
+    <div>
+      <div style="color:var(--gold-light);font-size:0.8rem;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;">Comparing:</div>
+      <div class="compare-items" id="compareItems"></div>
+    </div>
+    <button class="compare-btn-bar" onclick="openCompareModal()">Compare Side by Side →</button>
+  </div>
+
+  <div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+    <div class="modal" id="modalContent">
+      <button class="modal-close" onclick="closeDetailModal()">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="compareModal" onclick="closeCompareModal(event)">
+    <div class="compare-modal">
+      <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('open')">✕</button>
+      <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:0.25rem;">Policy Comparison</h2>
+      <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:1rem;">Side-by-side comparison of selected insurers</p>
+      <div id="compareTableContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    // ─── REAL DATA FROM MARKET OVERVIEW ───────────────────────────────────────
+    const companies = [
+      {
+        id: 1,
+        name: "Allianz Egypt",
+        abbr: "AZ",
+        bgColor: "#003781", textColor: "#FFFFFF",
+        desc: "Global insurance giant with premium programs including replacement car options.",
+        rateRange: "2.75% – 4.15% of car value",
+        priceFrom: 3100,
+        rating: 4.6,
+        reviews: 5221,
+        coverage: ["comprehensive", "third", "accident"],
+        tags: ["tag-comprehensive", "tag-third", "tag-accident"],
+        featured: true,
+        keyFeature: "Premium programs with replacement car options",
+        details: {
+          founded: "1997 (Egypt)",
+          headquarters: "Cairo — Dokki",
+          claimsTime: "3–5 business days",
+          maxCoverage: "EGP 3,000,000",
+          deductible: "From EGP 350",
+          roadside: "Premium plan only",
+          discount: "Up to 20% NCD",
+          medicalCover: "EGP 75,000"
+        },
+        terms: [
+          "International coverage available for GCC countries",
+          "Online claims portal with real-time status tracking",
+          "Free courtesy car for claims taking over 3 days",
+          "New-for-old replacement for vehicles under 1 year",
+          "Optional personal accident cover for up to 5 passengers",
+          "No deductible applicable for windscreen/glass damage"
+        ]
+      },
+      {
+        id: 2,
+        name: "AXA Egypt",
+        abbr: "AX",
+        bgColor: "#00008F", textColor: "#FFFFFF",
+        desc: "International insurer known for fast claims and strong digital services.",
+        rateRange: "3% – 4.5% of car value",
+        priceFrom: 2900,
+        rating: 4.4,
+        reviews: 4107,
+        coverage: ["comprehensive", "third", "theft"],
+        tags: ["tag-comprehensive", "tag-theft"],
+        featured: true,
+        keyFeature: "Fast claim processing & strong digital services",
+        details: {
+          founded: "2000 (Egypt)",
+          headquarters: "Cairo — New Cairo",
+          claimsTime: "4–6 business days",
+          maxCoverage: "EGP 2,500,000",
+          deductible: "From EGP 400",
+          roadside: "Included in all plans",
+          discount: "Up to 18% NCD",
+          medicalCover: "EGP 60,000"
+        },
+        terms: [
+          "24/7 roadside assistance across 150+ cities and towns",
+          "Cashless repairs at 500+ authorized workshops nationwide",
+          "Flexible monthly premium payment with no added fees",
+          "Up to 3 claims permitted per year without policy cancellation",
+          "Medical evacuation covered in the event of a serious accident",
+          "Optional driver personal accident cover available"
+        ]
+      },
+      {
+        id: 3,
+        name: "Misr Insurance",
+        abbr: "MI",
+        bgColor: "#1A3A6B", textColor: "#FFFFFF",
+        desc: "Egypt's largest state-owned insurer — government-backed with high reliability.",
+        rateRange: "3% – 3.5% of car value",
+        priceFrom: 2400,
+        rating: 4.2,
+        reviews: 3812,
+        coverage: ["comprehensive", "third", "fire", "theft"],
+        tags: ["tag-comprehensive", "tag-third", "tag-fire"],
+        featured: false,
+        keyFeature: "Government-backed, high reliability",
+        details: {
+          founded: "1952",
+          headquarters: "Cairo, Egypt",
+          claimsTime: "5–7 business days",
+          maxCoverage: "EGP 2,000,000",
+          deductible: "From EGP 500",
+          roadside: "Included",
+          discount: "Up to 15% NCD",
+          medicalCover: "EGP 50,000"
+        },
+        terms: [
+          "Policy renewable annually with loyalty bonus after 3 years",
+          "Third-party liability covered up to EGP 1.5M per incident",
+          "Windscreen cover included with zero deductible",
+          "24/7 emergency hotline available across Egypt",
+          "Claims submitted online or at any of 40+ branches",
+          "Vehicle inspection required for cars older than 5 years"
+        ]
+      },
+      {
+        id: 4,
+        name: "Tharwa Insurance",
+        abbr: "TH",
+        bgColor: "#1B6B3A", textColor: "#FFFFFF",
+        desc: "Competitive pricing with plans tailored especially for new and EV cars.",
+        rateRange: "1.8% – 3.5% of car value",
+        priceFrom: 2100,
+        rating: 3.9,
+        reviews: 1220,
+        coverage: ["third", "fire"],
+        tags: ["tag-third", "tag-fire"],
+        featured: false,
+        keyFeature: "Competitive pricing, especially for new/EV cars",
+        details: {
+          founded: "2008",
+          headquarters: "Cairo — Nasr City",
+          claimsTime: "7–12 business days",
+          maxCoverage: "EGP 900,000",
+          deductible: "From EGP 800",
+          roadside: "Not included",
+          discount: "Up to 8% NCD",
+          medicalCover: "EGP 20,000"
+        },
+        terms: [
+          "Lowest rates in the market for new vehicles and EVs",
+          "Third-party liability covers up to EGP 800,000 per accident",
+          "Monthly installment payments accepted at no extra charge",
+          "Damage from natural disasters covered under extended policy",
+          "Online policy issuance and renewal available 24/7",
+          "Claims inspector visits within 48 hours of notification"
+        ]
+      },
+      {
+        id: 5,
+        name: "Royal Insurance Egypt",
+        abbr: "RI",
+        bgColor: "#6B2D8B", textColor: "#FFFFFF",
+        desc: "Premium service insurer offering add-ons like key insurance and VIP support.",
+        rateRange: "3.2% – 4% of car value",
+        priceFrom: 4200,
+        rating: 4.5,
+        reviews: 2140,
+        coverage: ["comprehensive", "accident", "theft"],
+        tags: ["tag-comprehensive", "tag-accident", "tag-theft"],
+        featured: false,
+        keyFeature: "Offers premium add-ons like key insurance",
+        details: {
+          founded: "2005",
+          headquarters: "Cairo — Zamalek",
+          claimsTime: "2–4 business days",
+          maxCoverage: "EGP 4,000,000",
+          deductible: "From EGP 250",
+          roadside: "Included + towing",
+          discount: "Up to 25% NCD",
+          medicalCover: "EGP 150,000"
+        },
+        terms: [
+          "Dedicated VIP concierge for high-value vehicle claims",
+          "Replacement vehicle provided within 24 hours of claim",
+          "Agreed value policy — full car value settled without depreciation",
+          "Premium waiver in the event of total write-off or theft",
+          "Key insurance add-on covers lost/stolen/broken car keys",
+          "Optional international travel extension up to 30 days per trip"
+        ]
+      },
+      {
+        id: 6,
+        name: "GIG Egypt",
+        abbr: "GG",
+        bgColor: "#C5393A", textColor: "#FFFFFF",
+        desc: "Gulf Insurance Group — known for fast inspections and Gulf-standard coverage.",
+        rateRange: "3% – 4.2% of car value",
+        priceFrom: 2700,
+        rating: 4.4,
+        reviews: 2450,
+        coverage: ["comprehensive", "third", "accident", "theft"],
+        tags: ["tag-comprehensive", "tag-third", "tag-theft"],
+        featured: false,
+        keyFeature: "Known for fast inspections",
+        details: {
+          founded: "2015 (Egypt)",
+          headquarters: "Cairo — Fifth Settlement",
+          claimsTime: "3–5 business days",
+          maxCoverage: "EGP 2,200,000",
+          deductible: "From EGP 450",
+          roadside: "Included",
+          discount: "Up to 15% NCD",
+          medicalCover: "EGP 55,000"
+        },
+        terms: [
+          "GCC network allows use of insurance while traveling in Gulf states",
+          "Electronic claims submission via mobile app in under 5 minutes",
+          "Fast on-site inspection — typically completed within 24 hours",
+          "Zero excess on the first claim for new policyholders",
+          "Optional 'New Car Replacement' available for vehicles under 2 years",
+          "Comprehensive plan includes natural disaster and sandstorm cover"
+        ]
+      },
+      {
+        id: 7,
+        name: "Mohandes Insurance",
+        abbr: "MO",
+        bgColor: "#2E5D34", textColor: "#FFFFFF",
+        desc: "Specialized insurer with engineering-backed risk assessment and strong market reputation.",
+        rateRange: "3.5% – 4.5% of car value",
+        priceFrom: 1900,
+        rating: 4.0,
+        reviews: 1854,
+        coverage: ["third", "fire", "theft"],
+        tags: ["tag-third", "tag-fire", "tag-theft"],
+        featured: false,
+        keyFeature: "Strong market reputation",
+        details: {
+          founded: "1979",
+          headquarters: "Cairo — Heliopolis",
+          claimsTime: "6–10 business days",
+          maxCoverage: "EGP 1,200,000",
+          deductible: "From EGP 750",
+          roadside: "Not included",
+          discount: "Up to 10% NCD",
+          medicalCover: "EGP 25,000"
+        },
+        terms: [
+          "Competitive premiums tailored for commercial and fleet vehicles",
+          "Engineering inspection included as part of the claims process",
+          "Theft coverage requires police report filed within 24 hours",
+          "Policy renewal grace period of 30 days with no lapse in cover",
+          "Fire damage coverage includes self-ignition and lightning",
+          "Optional personal belongings cover up to EGP 5,000"
+        ]
+      },
+      {
+        id: 8,
+        name: "Delta Insurance",
+        abbr: "DI",
+        bgColor: "#1A5276", textColor: "#FFFFFF",
+        desc: "Reliable mid-tier insurer with flexible plans ideal for mid-range budgets.",
+        rateRange: "3% – 4.2% of car value",
+        priceFrom: 2250,
+        rating: 4.1,
+        reviews: 1650,
+        coverage: ["comprehensive", "third", "fire"],
+        tags: ["tag-comprehensive", "tag-third"],
+        featured: false,
+        keyFeature: "Flexible plans for mid-range budgets",
+        details: {
+          founded: "1995",
+          headquarters: "Cairo — Dokki",
+          claimsTime: "5–9 business days",
+          maxCoverage: "EGP 1,500,000",
+          deductible: "From EGP 600",
+          roadside: "Included in select plans",
+          discount: "Up to 12% NCD",
+          medicalCover: "EGP 35,000"
+        },
+        terms: [
+          "Strong branch network across Delta region and Upper Egypt",
+          "Flood damage covered under optional comprehensive add-on",
+          "Fleet discounts of up to 20% for 3 or more vehicles",
+          "Claims processed at any of 25+ offices nationwide",
+          "Vehicle value assessed by certified independent surveyor",
+          "Personal accident rider available for an additional EGP 200/year"
+        ]
+      },
+      {
+        id: 9,
+        name: "MetLife Egypt",
+        abbr: "ML",
+        bgColor: "#0066A1", textColor: "#FFFFFF",
+        desc: "Trusted American brand — strong in life & medical with bundled car insurance options.",
+        rateRange: "3.5% – 5% of car value",
+        priceFrom: 3400,
+        rating: 4.3,
+        reviews: 2988,
+        coverage: ["comprehensive", "accident"],
+        tags: ["tag-comprehensive", "tag-accident"],
+        featured: false,
+        keyFeature: "Strong in life/medical but offers car insurance",
+        details: {
+          founded: "1998 (Egypt)",
+          headquarters: "Cairo — Maadi",
+          claimsTime: "5–8 business days",
+          maxCoverage: "EGP 2,800,000",
+          deductible: "From EGP 600",
+          roadside: "Add-on available",
+          discount: "Up to 12% NCD",
+          medicalCover: "EGP 100,000"
+        },
+        terms: [
+          "Bundled discounts when combined with MetLife life insurance",
+          "Global coverage available for diplomatic plates and expats",
+          "Direct bank transfer for approved claims within 48 hours",
+          "Dedicated relationship manager for premium policyholders",
+          "Gap coverage for financed/leased vehicles under 3 years",
+          "Annual policy review and premium adjustment available"
+        ]
+      }
+    ];
+
+    let compareList = [];
+
+    function formatPrice(n) { return n.toLocaleString('en-EG'); }
+
+    function starStr(rating) {
+      const full = Math.floor(rating);
+      const half = rating % 1 >= 0.5;
+      let s = '★'.repeat(full);
+      if (half) s += '½';
+      return s;
+    }
+
+    function buildCard(c) {
+      const tagHTML = c.tags.map(t => {
+        const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
+        return `<span class="tag ${t}">${labels[t]}</span>`;
+      }).join('');
+
+      const inCompare = compareList.includes(c.id);
+
+      return `
+        <div class="company-card ${c.featured ? 'featured' : ''}" id="card-${c.id}" data-coverage="${c.coverage.join(' ')}">
+          ${c.featured ? '<div class="featured-badge">Top Rated Partner</div>' : ''}
+          <div class="card-body">
+            <div class="company-logo" style="background:${c.bgColor}; color:${c.textColor};">${c.abbr}</div>
+            <div class="company-info">
+              <div class="company-name">${c.name}</div>
+              <div class="company-desc">${c.desc}</div>
+              <div class="rate-badge">📊 Rate: ${c.rateRange}</div>
+              <div class="coverage-tags">${tagHTML}</div>
+              <button class="add-compare-btn ${inCompare ? 'added' : ''}" onclick="toggleCompare(${c.id}, '${c.name}')" id="comparebtn-${c.id}">
+                ${inCompare ? '✓ Added to Compare' : '+ Add to Compare'}
+              </button>
+            </div>
+            <div class="rating-block">
+              <div class="stars">${starStr(c.rating)}</div>
+              <div class="rating-num">${c.rating}</div>
+              <div class="rating-count">${c.reviews.toLocaleString()} reviews</div>
+            </div>
+            <div class="price-block">
+              <div class="price-from">Starting from</div>
+              <div class="price-amount">${formatPrice(c.priceFrom)}</div>
+              <div class="price-period">EGP / year</div>
+              <button class="price-cta" onclick="openDetailModal(${c.id})">View Details</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCards() {
+      document.getElementById('cardsGrid').innerHTML = companies.map(buildCard).join('');
+    }
+
+    function openDetailModal(id) {
+      const c = companies.find(x => x.id === id);
+      const tagHTML = c.tags.map(t => {
+        const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
+        return `<span class="tag ${t}" style="font-size:0.75rem;padding:4px 12px;">${labels[t]}</span>`;
+      }).join('');
+
+      document.getElementById('modalBody').innerHTML = `
+        <div class="modal-logo" style="background:${c.bgColor}; color:${c.textColor};">${c.abbr}</div>
+        <h2>${c.name}</h2>
+        <p class="modal-subtitle">${c.desc}</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0.75rem;">${tagHTML}</div>
+        <div style="background:rgba(197,153,58,0.1);border:1px solid rgba(197,153,58,0.3);border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--gold-dark);font-weight:600;">
+          📊 Rate Range: ${c.rateRange}
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;background:var(--cream);padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:1rem;">
+          <div>
+            <div style="color:var(--gold);font-size:1rem;letter-spacing:2px;">${starStr(c.rating)}</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">${c.reviews.toLocaleString()} reviews</div>
+          </div>
+          <div style="flex:1;text-align:right;">
+            <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Premium from</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);">${formatPrice(c.priceFrom)}<span style="font-size:0.85rem;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--text-muted);"> EGP/yr</span></div>
+          </div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:12px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--text-muted);">
+          <strong style="color:var(--navy);">✨ Key Feature:</strong> ${c.keyFeature}
+        </div>
+        <div class="modal-section-title">Policy Details</div>
+        <div class="modal-grid">
+          <div class="modal-detail"><div class="modal-detail-label">Founded</div><div class="modal-detail-value">${c.details.founded}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Headquarters</div><div class="modal-detail-value">${c.details.headquarters}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Claims Timeline</div><div class="modal-detail-value">${c.details.claimsTime}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Max Coverage</div><div class="modal-detail-value">${c.details.maxCoverage}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Deductible</div><div class="modal-detail-value">${c.details.deductible}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Roadside Assist</div><div class="modal-detail-value">${c.details.roadside}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">No-Claim Discount</div><div class="modal-detail-value">${c.details.discount}</div></div>
+          <div class="modal-detail"><div class="modal-detail-label">Medical Cover</div><div class="modal-detail-value">${c.details.medicalCover}</div></div>
+        </div>
+        <div class="modal-section-title">Terms & Conditions</div>
+        <ul class="modal-terms">
+          ${c.terms.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+        <button class="modal-get-btn" onclick="showToast('Redirecting to ${c.name} quote page...')">Get a Quote from ${c.name} →</button>
+      `;
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    function closeModal(e) {
+      if (e.target === document.getElementById('detailModal')) closeDetailModal();
+    }
+
+    function closeDetailModal() {
+      document.getElementById('detailModal').classList.remove('open');
+    }
+
+    function closeCompareModal(e) {
+      if (e.target === document.getElementById('compareModal')) {
+        document.getElementById('compareModal').classList.remove('open');
+      }
+    }
+
+    function toggleCompare(id, name) {
+      const idx = compareList.indexOf(id);
+      if (idx === -1) {
+        if (compareList.length >= 4) { showToast('Max 4 companies to compare at once'); return; }
+        compareList.push(id);
+      } else {
+        compareList.splice(idx, 1);
+      }
+      renderCompareBar();
+      const btn = document.getElementById('comparebtn-' + id);
+      if (btn) {
+        btn.classList.toggle('added', compareList.includes(id));
+        btn.textContent = compareList.includes(id) ? '✓ Added to Compare' : '+ Add to Compare';
+      }
+    }
+
+    function renderCompareBar() {
+      const bar = document.getElementById('compareBar');
+      const items = document.getElementById('compareItems');
+      if (compareList.length === 0) { bar.classList.remove('show'); return; }
+      bar.classList.add('show');
+      items.innerHTML = compareList.map(id => {
+        const c = companies.find(x => x.id === id);
+        return `<div class="compare-pill">${c.name}<button class="compare-pill-remove" onclick="toggleCompare(${id}, '${c.name}')">✕</button></div>`;
+      }).join('');
+    }
+
+    function openCompareModal() {
+      const selected = companies.filter(c => compareList.includes(c.id));
+      const rows = [
+        ['Rate (% of Car Value)', c => c.rateRange],
+        ['Premium From', c => formatPrice(c.priceFrom) + ' EGP/yr'],
+        ['Rating', c => c.rating + ' ★'],
+        ['Key Feature', c => c.keyFeature],
+        ['Founded', c => c.details.founded],
+        ['Max Coverage', c => c.details.maxCoverage],
+        ['Deductible', c => c.details.deductible],
+        ['Claims Time', c => c.details.claimsTime],
+        ['Roadside Assist', c => c.details.roadside],
+        ['No-Claim Discount', c => c.details.discount],
+        ['Medical Cover', c => c.details.medicalCover],
+        ['Comprehensive', c => c.coverage.includes('comprehensive') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
+        ['Third Party', c => c.coverage.includes('third') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
+        ['Theft Cover', c => c.coverage.includes('theft') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
+        ['Personal Accident', c => c.coverage.includes('accident') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
+      ];
+
+      const thead = `<tr><th>Feature</th>${selected.map(c => `<th style="background:${c.bgColor};">${c.name}</th>`).join('')}</tr>`;
+      const tbody = rows.map(([label, fn]) => `<tr><td>${label}</td>${selected.map(c => `<td>${fn(c)}</td>`).join('')}</tr>`).join('');
+
+      document.getElementById('compareTableContainer').innerHTML = `
+        <table class="compare-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>
+      `;
+      document.getElementById('compareModal').classList.add('open');
+    }
+
+    function updatePrice(el) {
+      document.getElementById('priceDisplay').textContent = parseInt(el.value).toLocaleString('en-EG') + ' EGP';
+    }
+
+    function applyFilters() {
+      const coverage = document.getElementById('filterCoverage').value;
+      const maxPrice = parseInt(document.getElementById('priceRange').value);
+      const minRating = parseFloat(document.getElementById('filterRating').value);
+      const needRoadside = document.getElementById('chk_roadside').checked;
+      const needNcd = document.getElementById('chk_ncd').checked;
+      const needMedical = document.getElementById('chk_medical').checked;
+      const sortBy = document.getElementById('sortSelect').value;
+
+      let filtered = companies.filter(c => {
+        if (coverage !== 'all' && !c.coverage.includes(coverage)) return false;
+        if (c.priceFrom > maxPrice) return false;
+        if (c.rating < minRating) return false;
+        if (needRoadside && c.details.roadside === 'Not included') return false;
+        if (needNcd && c.details.discount === 'None') return false;
+        if (needMedical && parseInt(c.details.medicalCover.replace(/[^0-9]/g, '')) < 1) return false;
+        return true;
+      });
+
+      if (sortBy === 'price_asc') filtered.sort((a, b) => a.priceFrom - b.priceFrom);
+      else if (sortBy === 'price_desc') filtered.sort((a, b) => b.priceFrom - a.priceFrom);
+      else if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+      else filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+      const grid = document.getElementById('cardsGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--text-muted);background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border-soft);">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🔍</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem;">No results found</div>
+          <div style="font-size:0.875rem;">Try adjusting your filters.</div>
+          <button onclick="resetFilters()" style="margin-top:1rem;background:var(--navy);color:var(--white);border:none;border-radius:6px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;">Reset Filters</button>
+        </div>`;
+      } else {
+        grid.innerHTML = filtered.map(buildCard).join('');
+      }
+
+      const countEl = document.querySelector('.results-count');
+      countEl.innerHTML = `Showing <strong>${filtered.length} of 9 companies</strong>${filtered.length < 9 ? ' — filtered results' : ' — 40+ policies available'}`;
+    }
+
+    function resetFilters() {
+      document.getElementById('filterCoverage').value = 'all';
+      document.getElementById('priceRange').value = 15000;
+      document.getElementById('priceDisplay').textContent = '15,000 EGP';
+      document.getElementById('filterRating').value = '0';
+      document.getElementById('chk_roadside').checked = false;
+      document.getElementById('chk_ncd').checked = false;
+      document.getElementById('chk_medical').checked = false;
+      document.getElementById('sortSelect').value = 'match';
+      applyFilters();
+      showToast('Filters reset — showing all companies');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    function heroSearch() {
+      const coverageMap = { 'Comprehensive': 'comprehensive', 'Third Party': 'third', 'Fire & Theft': 'fire' };
+      const heroSel = document.querySelectorAll('.search-bar select')[0];
+      const heroBudget = document.querySelectorAll('.search-bar select')[1];
+      const covVal = coverageMap[heroSel.value] || 'all';
+      const budgetMap = { 'Under 3,000 EGP': 3000, '3,000 – 6,000 EGP': 6000, '6,000 – 10,000 EGP': 10000, '10,000+ EGP': 15000 };
+      const maxP = budgetMap[heroBudget.value] || 15000;
+      document.getElementById('filterCoverage').value = covVal;
+      document.getElementById('priceRange').value = maxP;
+      document.getElementById('priceDisplay').textContent = maxP.toLocaleString('en-EG') + ' EGP';
+      document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+      applyFilters();
+      showToast('Showing matching policies!');
+    }
+
+    renderCards();
+    applyFilters();
+  </script>
+</body>
+</html>
