@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works — Auto Insurance Egypt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --gold: #C5993A;
@@ -21,9 +30,9 @@
       --text-muted: #5A5A6A;
       --text-light: #8A8A9A;
       --white: #FFFFFF;
-      --border-soft: rgba(0,0,0,0.07);
-      --shadow: 0 4px 24px rgba(13,27,42,0.08);
-      --shadow-card: 0 2px 12px rgba(13,27,42,0.06);
+      --border-soft: rgba(0, 0, 0, 0.07);
+      --shadow: 0 4px 24px rgba(13, 27, 42, 0.08);
+      --shadow-card: 0 2px 12px rgba(13, 27, 42, 0.06);
       --radius: 12px;
       --radius-sm: 8px;
       --radius-lg: 20px;
@@ -48,7 +57,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid rgba(197,153,58,0.25);
+      border-bottom: 1px solid rgba(197, 153, 58, 0.25);
     }
 
     .logo {
@@ -60,11 +69,19 @@
       text-decoration: none;
     }
 
-    .logo span { color: var(--white); font-weight: 400; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .logo span {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
     .nav-links a {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       font-size: 0.875rem;
       font-weight: 500;
@@ -72,8 +89,13 @@
       letter-spacing: 0.03em;
     }
 
-    .nav-links a:hover { color: var(--gold); }
-    .nav-active { color: var(--gold) !important; }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-active {
+      color: var(--gold) !important;
+    }
 
     /* PAGE HERO */
     .page-hero {
@@ -88,15 +110,15 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(197,153,58,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse at 70% 20%, rgba(197,153,58,0.08) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 50%, rgba(197, 153, 58, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse at 70% 20%, rgba(197, 153, 58, 0.08) 0%, transparent 50%);
       pointer-events: none;
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(197,153,58,0.15);
-      border: 1px solid rgba(197,153,58,0.35);
+      background: rgba(197, 153, 58, 0.15);
+      border: 1px solid rgba(197, 153, 58, 0.35);
       color: var(--gold-light);
       font-size: 0.75rem;
       font-weight: 600;
@@ -116,10 +138,13 @@
       margin-bottom: 1rem;
     }
 
-    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
 
     .page-hero p {
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 1rem;
       max-width: 540px;
       margin: 0 auto;
@@ -168,7 +193,7 @@
 
     .vm-card.vision {
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
-      border: 1px solid rgba(197,153,58,0.2);
+      border: 1px solid rgba(197, 153, 58, 0.2);
     }
 
     .vm-card.mission {
@@ -181,7 +206,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at top left, rgba(197,153,58,0.1) 0%, transparent 60%);
+      background: radial-gradient(ellipse at top left, rgba(197, 153, 58, 0.1) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -209,8 +234,13 @@
       position: relative;
     }
 
-    .vm-card.vision .vm-title { color: var(--white); }
-    .vm-card.mission .vm-title { color: var(--navy); }
+    .vm-card.vision .vm-title {
+      color: var(--white);
+    }
+
+    .vm-card.mission .vm-title {
+      color: var(--navy);
+    }
 
     .vm-body {
       font-size: 0.95rem;
@@ -219,17 +249,40 @@
       position: relative;
     }
 
-    .vm-card.vision .vm-body { color: rgba(255,255,255,0.65); }
-    .vm-card.mission .vm-body { color: var(--text-muted); }
+    .vm-card.vision .vm-body {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .vm-card.mission .vm-body {
+      color: var(--text-muted);
+    }
 
     /* STEPS */
-    .steps-section { margin-bottom: 5rem; }
+    .steps-section {
+      margin-bottom: 5rem;
+    }
 
-    .steps-header { text-align: center; margin-bottom: 3rem; }
-    .steps-header .section-label { text-align: center; }
-    .steps-header p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; margin-top: 0.5rem; }
+    .steps-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-    .steps-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .steps-header .section-label {
+      text-align: center;
+    }
+
+    .steps-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
     .step-row {
       display: grid;
@@ -244,7 +297,10 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .step-row:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+    .step-row:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow);
+    }
 
     .step-num-block {
       display: flex;
@@ -258,7 +314,7 @@
       height: 52px;
       border-radius: 14px;
       background: linear-gradient(135deg, var(--navy), var(--navy-soft));
-      border: 1px solid rgba(197,153,58,0.2);
+      border: 1px solid rgba(197, 153, 58, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -273,11 +329,13 @@
       width: 2px;
       flex: 1;
       min-height: 20px;
-      background: linear-gradient(to bottom, rgba(197,153,58,0.3), transparent);
+      background: linear-gradient(to bottom, rgba(197, 153, 58, 0.3), transparent);
       margin: 0 auto;
     }
 
-    .step-row:last-child .step-connector { display: none; }
+    .step-row:last-child .step-connector {
+      display: none;
+    }
 
     .step-icon {
       font-size: 1.75rem;
@@ -300,7 +358,9 @@
     }
 
     /* WHY US */
-    .why-section { margin-bottom: 4rem; }
+    .why-section {
+      margin-bottom: 4rem;
+    }
 
     .why-grid {
       display: grid;
@@ -324,8 +384,8 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: rgba(197,153,58,0.1);
-      border: 1px solid rgba(197,153,58,0.2);
+      background: rgba(197, 153, 58, 0.1);
+      border: 1px solid rgba(197, 153, 58, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -361,7 +421,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(197,153,58,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(197, 153, 58, 0.12) 0%, transparent 70%);
     }
 
     .cta-strip h2 {
@@ -373,7 +433,7 @@
     }
 
     .cta-strip p {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
       font-size: 0.95rem;
       margin-bottom: 1.75rem;
       position: relative;
@@ -396,7 +456,18 @@
       position: relative;
     }
 
-    .cta-btn:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-1px); }
+    .logo img {
+      height: 50px;
+      width: auto;
+      filter: brightness(0) saturate(100%) invert(65%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(90%);
+      margin-top: 8px;
+    }
+
+    .cta-btn:hover {
+      background: var(--gold-dark);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
 
     /* FOOTER */
     footer {
@@ -413,8 +484,18 @@
       padding-bottom: 2rem;
     }
 
-    .footer-brand .logo { font-size: 1.3rem; margin-bottom: 0.75rem; display: block; }
-    .footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; font-weight: 300; }
+    .footer-brand .logo {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.7;
+      font-weight: 300;
+    }
 
     .footer-col-title {
       font-size: 0.75rem;
@@ -425,39 +506,67 @@
       margin-bottom: 1rem;
     }
 
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 8px; }
-    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
 
     .footer-bottom {
       max-width: 1000px;
       margin: 0 auto;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.3);
     }
 
     @media (max-width: 768px) {
-      .vm-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .step-row { grid-template-columns: 56px 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
+      .vm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-row {
+        grid-template-columns: 56px 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
-    <a class="logo" href="index.html">Auto Insurance Customer Service <span>Egypt</span></a>
+    <a class="logo" href="index.html">
+      <img src="images/logo.png" alt="ما أمّن؟ Logo" height="50">
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about_us.html">About Us</a></li>
-      <li><a href="how_it_works.html" class="nav-active">How It Works</a></li>
+      <li><a href="about_us.html" class="nav-active">About Us</a></li>
+      <li><a href="how_it_works.html">How It Works</a></li>
     </ul>
   </nav>
 
@@ -480,13 +589,15 @@
         <div class="vm-icon">🔭</div>
         <div class="vm-label">Our Vision</div>
         <div class="vm-title">Leading Digital Platform</div>
-        <div class="vm-body">To become a leading digital platform for insurance comparison in Egypt — empowering every driver to make informed, confident decisions about their car insurance.</div>
+        <div class="vm-body">To become a leading digital platform for insurance comparison in Egypt — empowering every
+          driver to make informed, confident decisions about their car insurance.</div>
       </div>
       <div class="vm-card mission">
         <div class="vm-icon">🎯</div>
         <div class="vm-label">Our Mission</div>
         <div class="vm-title">Simplify Insurance Decisions</div>
-        <div class="vm-body">To simplify insurance decisions by providing clear, accurate, and accessible information — removing confusion and making the right choice obvious for every Egyptian driver.</div>
+        <div class="vm-body">To simplify insurance decisions by providing clear, accurate, and accessible information —
+          removing confusion and making the right choice obvious for every Egyptian driver.</div>
       </div>
     </div>
 
@@ -507,7 +618,9 @@
           <div>
             <div class="step-icon">🚗</div>
             <div class="step-title">Enter Your Car Details</div>
-            <div class="step-desc">Start by entering your car model, year, and the type of coverage you're looking for — comprehensive, third party, fire & theft, or personal accident. The more detail, the better we can match you.</div>
+            <div class="step-desc">Start by entering your car model, year, and the type of coverage you're looking for —
+              comprehensive, third party, fire & theft, or personal accident. The more detail, the better we can match
+              you.</div>
           </div>
         </div>
 
@@ -519,7 +632,9 @@
           <div>
             <div class="step-icon">🔍</div>
             <div class="step-title">Browse & Filter Results</div>
-            <div class="step-desc">Instantly see all 9 major Egyptian insurers ranked and filtered by price, rating, coverage type, and features. Use the sidebar to narrow results by roadside assistance, no-claim discount, medical cover, and more.</div>
+            <div class="step-desc">Instantly see all 9 major Egyptian insurers ranked and filtered by price, rating,
+              coverage type, and features. Use the sidebar to narrow results by roadside assistance, no-claim discount,
+              medical cover, and more.</div>
           </div>
         </div>
 
@@ -531,7 +646,9 @@
           <div>
             <div class="step-icon">⚖️</div>
             <div class="step-title">Compare Side by Side</div>
-            <div class="step-desc">Select up to 4 companies and compare them in a detailed side-by-side table — covering rate percentages, claim timelines, max coverage limits, deductibles, and coverage categories — all at a glance.</div>
+            <div class="step-desc">Select up to 4 companies and compare them in a detailed side-by-side table — covering
+              rate percentages, claim timelines, max coverage limits, deductibles, and coverage categories — all at a
+              glance.</div>
           </div>
         </div>
 
@@ -542,7 +659,8 @@
           <div>
             <div class="step-icon">✅</div>
             <div class="step-title">Choose & Get a Quote</div>
-            <div class="step-desc">Once you've found the policy that fits your needs and budget, click "View Details" to read the full terms, then "Get a Quote" to be connected directly with the insurer for the next step.</div>
+            <div class="step-desc">Once you've found the policy that fits your needs and budget, click "View Details" to
+              read the full terms, then "Get a Quote" to be connected directly with the insurer for the next step.</div>
           </div>
         </div>
       </div>
@@ -558,28 +676,32 @@
           <div class="why-bullet">📊</div>
           <div>
             <div class="why-text-title">Real Market Data</div>
-            <div class="why-text-desc">All rate ranges and features are based on actual Egyptian insurance market research — not generic estimates.</div>
+            <div class="why-text-desc">All rate ranges and features are based on actual Egyptian insurance market
+              research — not generic estimates.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-bullet">⚡</div>
           <div>
             <div class="why-text-title">Instant Comparison</div>
-            <div class="why-text-desc">No waiting, no phone calls. Our platform shows you all your options in real time with powerful filters.</div>
+            <div class="why-text-desc">No waiting, no phone calls. Our platform shows you all your options in real time
+              with powerful filters.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-bullet">🔒</div>
           <div>
             <div class="why-text-title">No Bias, No Ads</div>
-            <div class="why-text-desc">We don't take commissions from insurers. Results are ranked by match quality and rating, not by who pays us.</div>
+            <div class="why-text-desc">We don't take commissions from insurers. Results are ranked by match quality and
+              rating, not by who pays us.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-bullet">🇪🇬</div>
           <div>
             <div class="why-text-title">Built for Egypt</div>
-            <div class="why-text-desc">Designed specifically for Egyptian drivers — prices in EGP, companies licensed under the FRA, and coverage that fits local needs.</div>
+            <div class="why-text-desc">Designed specifically for Egyptian drivers — prices in EGP, companies licensed
+              under the FRA, and coverage that fits local needs.</div>
           </div>
         </div>
       </div>
@@ -598,7 +720,8 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="logo">Auto Insurance Customer Service <span>Egypt</span></span>
-        <p class="footer-desc">A graduation project aimed at simplifying car insurance selection in Egypt. Compare insurance companies, prices, and coverage easily.</p>
+        <p class="footer-desc">A graduation project aimed at simplifying car insurance selection in Egypt. Compare
+          insurance companies, prices, and coverage easily.</p>
       </div>
       <div>
         <div class="footer-col-title">Pages</div>
@@ -622,4 +745,5 @@
   </footer>
 
 </body>
+
 </html>
