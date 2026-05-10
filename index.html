@@ -47,6 +47,7 @@
       min-height: 100vh;
     }
 
+    /* ── NAV ── */
     nav {
       background: var(--navy);
       padding: 0 2.5rem;
@@ -96,29 +97,47 @@
       color: var(--gold);
     }
 
-    .nav-cta {
-      background: var(--gold);
-      color: var(--navy) !important;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-weight: 600 !important;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
-      padding: 6rem 2.5rem 4rem;
-      text-align: center;
+    /* ── HERO + STATS SHARED BACKGROUND WRAPPER ── */
+    .hero-stats-wrapper {
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero-stats-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero3.png');
+      background-size: cover;
+      background-position: center center;
+      z-index: 0;
+    }
+
+    .hero-stats-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(197, 153, 58, 0.12) 0%, transparent 65%),
-        radial-gradient(ellipse at 70% 20%, rgba(197, 153, 58, 0.08) 0%, transparent 50%);
-      pointer-events: none;
+      background: linear-gradient(to right,
+          rgba(13, 27, 42, 0.96) 0%,
+          rgba(13, 27, 42, 0.88) 35%,
+          rgba(13, 27, 42, 0.4) 65%,
+          rgba(13, 27, 42, 0.05) 100%);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 5rem 4rem 2.5rem;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      text-align: left;
     }
 
     .hero-badge {
@@ -126,7 +145,7 @@
       background: rgba(197, 153, 58, 0.15);
       border: 1px solid rgba(197, 153, 58, 0.35);
       color: var(--gold-light);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -137,13 +156,13 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 700;
       color: var(--white);
-      line-height: 1.2;
+      line-height: 1.15;
       margin-bottom: 1.2rem;
-      max-width: 700px;
-      margin-inline: auto;
+      max-width: 100%;
+      margin-inline: 0;
     }
 
     .hero h1 em {
@@ -153,39 +172,45 @@
 
     .hero p {
       color: rgba(255, 255, 255, 0.65);
-      font-size: 1.05rem;
-      max-width: 500px;
-      margin-inline: auto;
+      font-size: 1rem;
+      max-width: 460px;
+      margin-inline: 0;
       margin-bottom: 2.5rem;
       font-weight: 300;
     }
 
+    .hero p strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── SEARCH BAR — single row ── */
     .search-bar {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 1rem 1.25rem;
+      padding: 0.6rem 0.6rem;
       display: flex;
-      gap: 0.75rem;
+      gap: 0.5rem;
       align-items: center;
-      max-width: 760px;
-      margin: 0 auto;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+      flex-wrap: nowrap;
     }
 
     .search-bar input,
     .search-bar select {
       border: 1.5px solid var(--border-soft);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      padding: 10px 10px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
+      font-size: 0.82rem;
       color: var(--text);
       background: var(--cream);
       outline: none;
       transition: border-color 0.2s;
       flex: 1;
-      min-width: 130px;
+      min-width: 0;
     }
 
     .search-bar input:focus,
@@ -198,12 +223,13 @@
       color: var(--navy);
       border: none;
       border-radius: var(--radius-sm);
-      padding: 11px 24px;
+      padding: 11px 18px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
+      flex-shrink: 0;
       transition: background 0.2s, transform 0.15s;
     }
 
@@ -212,34 +238,73 @@
       transform: translateY(-1px);
     }
 
+    /* ── STATS ROW — still inside shared bg ── */
+    .stats-wrapper {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem 2rem 2rem;
+      border-top: 1px solid rgba(197, 153, 58, 0.15);
+    }
+
     .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      padding: 1.5rem 2.5rem;
-      background: var(--navy-mid);
-      border-bottom: 1px solid rgba(197, 153, 58, 0.15);
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(13, 27, 42, 0.55);
+      border: 1px solid rgba(197, 153, 58, 0.2);
+      border-radius: var(--radius-lg);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
     }
 
     .stat {
       text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(197, 153, 58, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border: 1.5px solid rgba(197, 153, 58, 0.4);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .stat-text {
+      text-align: left;
     }
 
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
       color: var(--gold);
+      line-height: 1;
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
+    /* ── MAIN GRID ── */
     main {
       max-width: 1220px;
       margin: 0 auto;
@@ -250,6 +315,7 @@
       align-items: start;
     }
 
+    /* ── SIDEBAR ── */
     .sidebar {
       background: var(--white);
       border-radius: var(--radius-lg);
@@ -328,26 +394,6 @@
       cursor: pointer;
     }
 
-    .apply-btn {
-      width: 100%;
-      background: var(--navy);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 0.5rem;
-    }
-
-    .apply-btn:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
     .reset-btn {
       width: 100%;
       background: transparent;
@@ -367,6 +413,7 @@
       color: var(--gold);
     }
 
+    /* ── RESULTS ── */
     .results-header {
       display: flex;
       align-items: center;
@@ -398,6 +445,7 @@
       cursor: pointer;
     }
 
+    /* ── CARDS ── */
     .cards-grid {
       display: flex;
       flex-direction: column;
@@ -408,7 +456,6 @@
       background: var(--white);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-soft);
-      padding: 0;
       box-shadow: var(--shadow-card);
       overflow: hidden;
       transition: box-shadow 0.2s, transform 0.2s;
@@ -478,7 +525,6 @@
       font-weight: 300;
     }
 
-    /* Rate badge */
     .rate-badge {
       display: inline-block;
       background: rgba(197, 153, 58, 0.12);
@@ -489,7 +535,6 @@
       padding: 3px 10px;
       border-radius: 50px;
       margin-bottom: 8px;
-      letter-spacing: 0.02em;
     }
 
     .coverage-tags {
@@ -588,7 +633,6 @@
       display: block;
       background: var(--navy);
       color: var(--white);
-      text-decoration: none;
       border: none;
       border-radius: var(--radius-sm);
       padding: 10px 20px;
@@ -599,7 +643,6 @@
       margin-top: 10px;
       transition: background 0.2s;
       text-align: center;
-      letter-spacing: 0.02em;
     }
 
     .price-cta:hover {
@@ -607,58 +650,28 @@
       color: var(--navy);
     }
 
-    .card-details {
-      border-top: 1px solid var(--border-soft);
-      padding: 1.25rem 1.5rem;
-      background: var(--cream);
-      display: none;
-    }
-
-    .card-details.open {
-      display: block;
-    }
-
-    .details-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .detail-item-label {
+    .add-compare-btn {
+      background: transparent;
+      border: 1px solid rgba(197, 153, 58, 0.3);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 4px 14px;
       font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--text-light);
-      margin-bottom: 4px;
       font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      margin-top: 6px;
     }
 
-    .detail-item-value {
-      font-size: 0.875rem;
+    .add-compare-btn:hover,
+    .add-compare-btn.added {
+      background: var(--gold);
       color: var(--navy);
-      font-weight: 500;
+      border-color: var(--gold);
     }
 
-    .terms-box {
-      background: var(--white);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .terms-box strong {
-      color: var(--navy);
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
+    /* ── MODALS ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -810,7 +823,6 @@
       cursor: pointer;
       margin-top: 1.5rem;
       transition: background 0.2s;
-      letter-spacing: 0.02em;
     }
 
     .modal-get-btn:hover {
@@ -818,96 +830,7 @@
       color: var(--navy);
     }
 
-    footer {
-      background: var(--navy);
-      padding: 3rem 2.5rem 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2rem;
-      padding-bottom: 2rem;
-    }
-
-    .footer-brand .logo {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .footer-desc {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .footer-col-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links a {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--navy);
-      color: var(--white);
-      padding: 14px 24px;
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
-      font-weight: 500;
-      border-left: 3px solid var(--gold);
-      box-shadow: var(--shadow);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s;
-      z-index: 2000;
-    }
-
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
+    /* ── COMPARE ── */
     .compare-bar {
       position: fixed;
       bottom: 0;
@@ -1033,25 +956,103 @@
       font-weight: 600;
     }
 
-    .add-compare-btn {
-      background: transparent;
-      border: 1px solid rgba(197, 153, 58, 0.3);
-      color: var(--gold);
-      border-radius: 50px;
-      padding: 4px 14px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.2s;
-      margin-top: 6px;
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 2.5rem 2rem;
+      margin-top: 4rem;
     }
 
-    .add-compare-btn:hover,
-    .add-compare-btn.added {
-      background: var(--gold);
-      color: var(--navy);
-      border-color: var(--gold);
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-left: 3px solid var(--gold);
+      box-shadow: var(--shadow);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .search-bar {
+        flex-wrap: wrap;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1068,57 +1069,51 @@
         width: 100%;
         gap: 0.75rem;
       }
-    }
 
-    @media (max-width: 768px) {
+      .hero {
+        padding: 3rem 1.5rem;
+        min-height: auto;
+      }
+
       .stats-row {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .stat {
-        flex: 1 1 40%;
+        border-right: none;
+        border-bottom: 1px solid rgba(197, 153, 58, 0.15);
       }
-    }
 
-    @media (max-width: 768px) {
+      .stat:nth-child(odd) {
+        border-right: 1px solid rgba(197, 153, 58, 0.15);
+      }
+
+      .stat:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+
       .search-bar {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .search-bar input,
-      .search-bar select,
-      .search-bar button {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
       .card-body {
         grid-template-columns: 1fr;
         text-align: center;
       }
 
       .company-logo {
-        order: 1;
         margin: 0 auto;
       }
 
-      .company-info {
-        order: 2;
-      }
-
-      .rating-block {
-        order: 3;
-      }
-
       .price-block {
-        order: 4;
+        text-align: center;
       }
-    }
 
-    @media (max-width: 768px) {
       .footer-inner {
         grid-template-columns: 1fr;
       }
@@ -1131,27 +1126,16 @@
     }
 
     @media (max-width: 480px) {
-      body {
-        font-size: 0.9rem;
-      }
-
-      .hero {
-        padding: 4rem 1rem;
-      }
-
       .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
-      .logo img {
-        height: 50px;
-        width: auto;
-        display: block;
+      .stats-row {
+        grid-template-columns: 1fr;
       }
 
-
-      main {
-        padding: 2rem 1rem;
+      .stat {
+        border-right: none !important;
       }
     }
   </style>
@@ -1163,53 +1147,105 @@
     <a class="logo" href="index.html">Auto Insurance Customer Service <span>Egypt</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about_us.html" class="nav-active">About Us</a></li>
+      <li><a href="about_us.html">About Us</a></li>
       <li><a href="how_it_works.html">How It Works</a></li>
     </ul>
   </nav>
 
-  <section class="hero">
-    <div class="hero-badge">Egypt's #1 Insurance Comparison Platform</div>
-    <h1>Find the <em>Best Car Insurance</em> in Egypt</h1>
-    <p>Compare policies from 9 top-rated insurers. Save up to 40% on your premium in minutes.</p>
+  <!-- HERO + STATS share one background image -->
+  <div class="hero-stats-wrapper">
+    <div class="hero-stats-bg"></div>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Your car model (e.g. Toyota Corolla 2021)">
-      <select>
-        <option>Coverage type</option>
-        <option>Comprehensive</option>
-        <option>Third Party</option>
-        <option>Fire & Theft</option>
-      </select>
-      <select>
-        <option>Budget range</option>
-        <option>Under 3,000 EGP</option>
-        <option>3,000 – 6,000 EGP</option>
-        <option>6,000 – 10,000 EGP</option>
-        <option>10,000+ EGP</option>
-      </select>
-      <button onclick="heroSearch();showToast('Searching for the best policies...')">Compare Now →</button>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">Egypt's #1 Insurance Comparison Platform</div>
+        <h1>Find the <em>Best Car Insurance</em> in Egypt</h1>
+        <p>Compare policies from top-rated insurers. Save up to <strong>40%</strong> on your premium in minutes.</p>
 
-  <div class="stats-row">
-    <div class="stat">
-      <div class="stat-num">9</div>
-      <div class="stat-label">Insurance Partners</div>
+        <div class="search-bar">
+          <input type="text" placeholder="Your car model (e.g. Toyota Corolla)">
+          <select>
+            <option>Coverage type</option>
+            <option>Comprehensive</option>
+            <option>Third Party</option>
+            <option>Fire &amp; Theft</option>
+          </select>
+          <select>
+            <option>Budget range</option>
+            <option>Under 3,000 EGP</option>
+            <option>3,000 – 6,000 EGP</option>
+            <option>6,000 – 10,000 EGP</option>
+            <option>10,000+ EGP</option>
+          </select>
+          <button onclick="heroSearch();showToast('Searching for the best policies...')">Compare Now →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS — inside the same bg wrapper so the image continues -->
+    <div class="stats-wrapper">
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          <div class="stat-text">
+            <div class="stat-num">9</div>
+            <div class="stat-label">Insurance Partners</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+              <rect x="9" y="3" width="6" height="4" rx="1" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          <div class="stat-text">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">Policy Plans</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="stat-text">
+            <div class="stat-num">50K+</div>
+            <div class="stat-label">Satisfied Customers</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+            </svg>
+          </div>
+          <div class="stat-text">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Claims Support</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="stat">
-      <div class="stat-num">40+</div>
-      <div class="stat-label">Policy Plans</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">50K+</div>
-      <div class="stat-label">Satisfied Customers</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Claims Support</div>
-    </div>
-  </div>
+
+  </div><!-- /.hero-stats-wrapper -->
 
   <main>
     <aside class="sidebar">
@@ -1221,7 +1257,7 @@
           <option value="all">All Coverage Types</option>
           <option value="comprehensive">Comprehensive</option>
           <option value="third">Third Party</option>
-          <option value="fire">Fire & Theft</option>
+          <option value="fire">Fire &amp; Theft</option>
           <option value="theft">Theft</option>
           <option value="accident">Personal Accident</option>
         </select>
@@ -1241,8 +1277,8 @@
         <label class="filter-label">Min Star Rating</label>
         <select id="filterRating" onchange="applyFilters()">
           <option value="0">Any Rating</option>
-          <option value="4">4★ & above</option>
-          <option value="4.5">4.5★ & above</option>
+          <option value="4">4★ &amp; above</option>
+          <option value="4.5">4.5★ &amp; above</option>
         </select>
       </div>
 
@@ -1271,7 +1307,6 @@
           <option value="rating">Sort: Highest Rating</option>
         </select>
       </div>
-
       <div class="cards-grid" id="cardsGrid"></div>
     </section>
   </main>
@@ -1302,7 +1337,6 @@
         </ul>
       </div>
     </div>
-
   </footer>
 
   <div class="toast" id="toast"></div>
@@ -1335,305 +1369,16 @@
   </div>
 
   <script>
-    // ─── REAL DATA FROM MARKET OVERVIEW ───────────────────────────────────────
     const companies = [
-      {
-        id: 1,
-        name: "Allianz Egypt",
-        abbr: "AZ",
-        bgColor: "#003781", textColor: "#FFFFFF",
-        desc: "Global insurance giant with premium programs including replacement car options.",
-        rateRange: "2.75% – 4.15% of car value",
-        priceFrom: 3100,
-        rating: 4.6,
-        reviews: 5221,
-        coverage: ["comprehensive", "third", "accident"],
-        tags: ["tag-comprehensive", "tag-third", "tag-accident"],
-        featured: true,
-        keyFeature: "Premium programs with replacement car options",
-        details: {
-          founded: "1997 (Egypt)",
-          headquarters: "Cairo — Dokki",
-          claimsTime: "3–5 business days",
-          maxCoverage: "EGP 3,000,000",
-          deductible: "From EGP 350",
-          roadside: "Premium plan only",
-          discount: "Up to 20% NCD",
-          medicalCover: "EGP 75,000"
-        },
-        terms: [
-          "International coverage available for GCC countries",
-          "Online claims portal with real-time status tracking",
-          "Free courtesy car for claims taking over 3 days",
-          "New-for-old replacement for vehicles under 1 year",
-          "Optional personal accident cover for up to 5 passengers",
-          "No deductible applicable for windscreen/glass damage"
-        ]
-      },
-      {
-        id: 2,
-        name: "AXA Egypt",
-        abbr: "AX",
-        bgColor: "#00008F", textColor: "#FFFFFF",
-        desc: "International insurer known for fast claims and strong digital services.",
-        rateRange: "3% – 4.5% of car value",
-        priceFrom: 2900,
-        rating: 4.4,
-        reviews: 4107,
-        coverage: ["comprehensive", "third", "theft"],
-        tags: ["tag-comprehensive", "tag-theft"],
-        featured: true,
-        keyFeature: "Fast claim processing & strong digital services",
-        details: {
-          founded: "2000 (Egypt)",
-          headquarters: "Cairo — New Cairo",
-          claimsTime: "4–6 business days",
-          maxCoverage: "EGP 2,500,000",
-          deductible: "From EGP 400",
-          roadside: "Included in all plans",
-          discount: "Up to 18% NCD",
-          medicalCover: "EGP 60,000"
-        },
-        terms: [
-          "24/7 roadside assistance across 150+ cities and towns",
-          "Cashless repairs at 500+ authorized workshops nationwide",
-          "Flexible monthly premium payment with no added fees",
-          "Up to 3 claims permitted per year without policy cancellation",
-          "Medical evacuation covered in the event of a serious accident",
-          "Optional driver personal accident cover available"
-        ]
-      },
-      {
-        id: 3,
-        name: "Misr Insurance",
-        abbr: "MI",
-        bgColor: "#1A3A6B", textColor: "#FFFFFF",
-        desc: "Egypt's largest state-owned insurer — government-backed with high reliability.",
-        rateRange: "3% – 3.5% of car value",
-        priceFrom: 2400,
-        rating: 4.2,
-        reviews: 3812,
-        coverage: ["comprehensive", "third", "fire", "theft"],
-        tags: ["tag-comprehensive", "tag-third", "tag-fire"],
-        featured: false,
-        keyFeature: "Government-backed, high reliability",
-        details: {
-          founded: "1952",
-          headquarters: "Cairo, Egypt",
-          claimsTime: "5–7 business days",
-          maxCoverage: "EGP 2,000,000",
-          deductible: "From EGP 500",
-          roadside: "Included",
-          discount: "Up to 15% NCD",
-          medicalCover: "EGP 50,000"
-        },
-        terms: [
-          "Policy renewable annually with loyalty bonus after 3 years",
-          "Third-party liability covered up to EGP 1.5M per incident",
-          "Windscreen cover included with zero deductible",
-          "24/7 emergency hotline available across Egypt",
-          "Claims submitted online or at any of 40+ branches",
-          "Vehicle inspection required for cars older than 5 years"
-        ]
-      },
-      {
-        id: 4,
-        name: "Tharwa Insurance",
-        abbr: "TH",
-        bgColor: "#1B6B3A", textColor: "#FFFFFF",
-        desc: "Competitive pricing with plans tailored especially for new and EV cars.",
-        rateRange: "1.8% – 3.5% of car value",
-        priceFrom: 2100,
-        rating: 3.9,
-        reviews: 1220,
-        coverage: ["third", "fire"],
-        tags: ["tag-third", "tag-fire"],
-        featured: false,
-        keyFeature: "Competitive pricing, especially for new/EV cars",
-        details: {
-          founded: "2008",
-          headquarters: "Cairo — Nasr City",
-          claimsTime: "7–12 business days",
-          maxCoverage: "EGP 900,000",
-          deductible: "From EGP 800",
-          roadside: "Not included",
-          discount: "Up to 8% NCD",
-          medicalCover: "EGP 20,000"
-        },
-        terms: [
-          "Lowest rates in the market for new vehicles and EVs",
-          "Third-party liability covers up to EGP 800,000 per accident",
-          "Monthly installment payments accepted at no extra charge",
-          "Damage from natural disasters covered under extended policy",
-          "Online policy issuance and renewal available 24/7",
-          "Claims inspector visits within 48 hours of notification"
-        ]
-      },
-      {
-        id: 5,
-        name: "Royal Insurance Egypt",
-        abbr: "RI",
-        bgColor: "#6B2D8B", textColor: "#FFFFFF",
-        desc: "Premium service insurer offering add-ons like key insurance and VIP support.",
-        rateRange: "3.2% – 4% of car value",
-        priceFrom: 4200,
-        rating: 4.5,
-        reviews: 2140,
-        coverage: ["comprehensive", "accident", "theft"],
-        tags: ["tag-comprehensive", "tag-accident", "tag-theft"],
-        featured: false,
-        keyFeature: "Offers premium add-ons like key insurance",
-        details: {
-          founded: "2005",
-          headquarters: "Cairo — Zamalek",
-          claimsTime: "2–4 business days",
-          maxCoverage: "EGP 4,000,000",
-          deductible: "From EGP 250",
-          roadside: "Included + towing",
-          discount: "Up to 25% NCD",
-          medicalCover: "EGP 150,000"
-        },
-        terms: [
-          "Dedicated VIP concierge for high-value vehicle claims",
-          "Replacement vehicle provided within 24 hours of claim",
-          "Agreed value policy — full car value settled without depreciation",
-          "Premium waiver in the event of total write-off or theft",
-          "Key insurance add-on covers lost/stolen/broken car keys",
-          "Optional international travel extension up to 30 days per trip"
-        ]
-      },
-      {
-        id: 6,
-        name: "GIG Egypt",
-        abbr: "GG",
-        bgColor: "#C5393A", textColor: "#FFFFFF",
-        desc: "Gulf Insurance Group — known for fast inspections and Gulf-standard coverage.",
-        rateRange: "3% – 4.2% of car value",
-        priceFrom: 2700,
-        rating: 4.4,
-        reviews: 2450,
-        coverage: ["comprehensive", "third", "accident", "theft"],
-        tags: ["tag-comprehensive", "tag-third", "tag-theft"],
-        featured: false,
-        keyFeature: "Known for fast inspections",
-        details: {
-          founded: "2015 (Egypt)",
-          headquarters: "Cairo — Fifth Settlement",
-          claimsTime: "3–5 business days",
-          maxCoverage: "EGP 2,200,000",
-          deductible: "From EGP 450",
-          roadside: "Included",
-          discount: "Up to 15% NCD",
-          medicalCover: "EGP 55,000"
-        },
-        terms: [
-          "GCC network allows use of insurance while traveling in Gulf states",
-          "Electronic claims submission via mobile app in under 5 minutes",
-          "Fast on-site inspection — typically completed within 24 hours",
-          "Zero excess on the first claim for new policyholders",
-          "Optional 'New Car Replacement' available for vehicles under 2 years",
-          "Comprehensive plan includes natural disaster and sandstorm cover"
-        ]
-      },
-      {
-        id: 7,
-        name: "Mohandes Insurance",
-        abbr: "MO",
-        bgColor: "#2E5D34", textColor: "#FFFFFF",
-        desc: "Specialized insurer with engineering-backed risk assessment and strong market reputation.",
-        rateRange: "3.5% – 4.5% of car value",
-        priceFrom: 1900,
-        rating: 4.0,
-        reviews: 1854,
-        coverage: ["third", "fire", "theft"],
-        tags: ["tag-third", "tag-fire", "tag-theft"],
-        featured: false,
-        keyFeature: "Strong market reputation",
-        details: {
-          founded: "1979",
-          headquarters: "Cairo — Heliopolis",
-          claimsTime: "6–10 business days",
-          maxCoverage: "EGP 1,200,000",
-          deductible: "From EGP 750",
-          roadside: "Not included",
-          discount: "Up to 10% NCD",
-          medicalCover: "EGP 25,000"
-        },
-        terms: [
-          "Competitive premiums tailored for commercial and fleet vehicles",
-          "Engineering inspection included as part of the claims process",
-          "Theft coverage requires police report filed within 24 hours",
-          "Policy renewal grace period of 30 days with no lapse in cover",
-          "Fire damage coverage includes self-ignition and lightning",
-          "Optional personal belongings cover up to EGP 5,000"
-        ]
-      },
-      {
-        id: 8,
-        name: "Delta Insurance",
-        abbr: "DI",
-        bgColor: "#1A5276", textColor: "#FFFFFF",
-        desc: "Reliable mid-tier insurer with flexible plans ideal for mid-range budgets.",
-        rateRange: "3% – 4.2% of car value",
-        priceFrom: 2250,
-        rating: 4.1,
-        reviews: 1650,
-        coverage: ["comprehensive", "third", "fire"],
-        tags: ["tag-comprehensive", "tag-third"],
-        featured: false,
-        keyFeature: "Flexible plans for mid-range budgets",
-        details: {
-          founded: "1995",
-          headquarters: "Cairo — Dokki",
-          claimsTime: "5–9 business days",
-          maxCoverage: "EGP 1,500,000",
-          deductible: "From EGP 600",
-          roadside: "Included in select plans",
-          discount: "Up to 12% NCD",
-          medicalCover: "EGP 35,000"
-        },
-        terms: [
-          "Strong branch network across Delta region and Upper Egypt",
-          "Flood damage covered under optional comprehensive add-on",
-          "Fleet discounts of up to 20% for 3 or more vehicles",
-          "Claims processed at any of 25+ offices nationwide",
-          "Vehicle value assessed by certified independent surveyor",
-          "Personal accident rider available for an additional EGP 200/year"
-        ]
-      },
-      {
-        id: 9,
-        name: "MetLife Egypt",
-        abbr: "ML",
-        bgColor: "#0066A1", textColor: "#FFFFFF",
-        desc: "Trusted American brand — strong in life & medical with bundled car insurance options.",
-        rateRange: "3.5% – 5% of car value",
-        priceFrom: 3400,
-        rating: 4.3,
-        reviews: 2988,
-        coverage: ["comprehensive", "accident"],
-        tags: ["tag-comprehensive", "tag-accident"],
-        featured: false,
-        keyFeature: "Strong in life/medical but offers car insurance",
-        details: {
-          founded: "1998 (Egypt)",
-          headquarters: "Cairo — Maadi",
-          claimsTime: "5–8 business days",
-          maxCoverage: "EGP 2,800,000",
-          deductible: "From EGP 600",
-          roadside: "Add-on available",
-          discount: "Up to 12% NCD",
-          medicalCover: "EGP 100,000"
-        },
-        terms: [
-          "Bundled discounts when combined with MetLife life insurance",
-          "Global coverage available for diplomatic plates and expats",
-          "Direct bank transfer for approved claims within 48 hours",
-          "Dedicated relationship manager for premium policyholders",
-          "Gap coverage for financed/leased vehicles under 3 years",
-          "Annual policy review and premium adjustment available"
-        ]
-      }
+      { id: 1, name: "Allianz Egypt", abbr: "AZ", bgColor: "#003781", textColor: "#FFFFFF", desc: "Global insurance giant with premium programs including replacement car options.", rateRange: "2.75% – 4.15% of car value", priceFrom: 3100, rating: 4.6, reviews: 5221, coverage: ["comprehensive", "third", "accident"], tags: ["tag-comprehensive", "tag-third", "tag-accident"], featured: true, keyFeature: "Premium programs with replacement car options", details: { founded: "1997 (Egypt)", headquarters: "Cairo — Dokki", claimsTime: "3–5 business days", maxCoverage: "EGP 3,000,000", deductible: "From EGP 350", roadside: "Premium plan only", discount: "Up to 20% NCD", medicalCover: "EGP 75,000" }, terms: ["International coverage available for GCC countries", "Online claims portal with real-time status tracking", "Free courtesy car for claims taking over 3 days", "New-for-old replacement for vehicles under 1 year", "Optional personal accident cover for up to 5 passengers", "No deductible applicable for windscreen/glass damage"] },
+      { id: 2, name: "AXA Egypt", abbr: "AX", bgColor: "#00008F", textColor: "#FFFFFF", desc: "International insurer known for fast claims and strong digital services.", rateRange: "3% – 4.5% of car value", priceFrom: 2900, rating: 4.4, reviews: 4107, coverage: ["comprehensive", "third", "theft"], tags: ["tag-comprehensive", "tag-theft"], featured: true, keyFeature: "Fast claim processing & strong digital services", details: { founded: "2000 (Egypt)", headquarters: "Cairo — New Cairo", claimsTime: "4–6 business days", maxCoverage: "EGP 2,500,000", deductible: "From EGP 400", roadside: "Included in all plans", discount: "Up to 18% NCD", medicalCover: "EGP 60,000" }, terms: ["24/7 roadside assistance across 150+ cities and towns", "Cashless repairs at 500+ authorized workshops nationwide", "Flexible monthly premium payment with no added fees", "Up to 3 claims permitted per year without policy cancellation", "Medical evacuation covered in the event of a serious accident", "Optional driver personal accident cover available"] },
+      { id: 3, name: "Misr Insurance", abbr: "MI", bgColor: "#1A3A6B", textColor: "#FFFFFF", desc: "Egypt's largest state-owned insurer — government-backed with high reliability.", rateRange: "3% – 3.5% of car value", priceFrom: 2400, rating: 4.2, reviews: 3812, coverage: ["comprehensive", "third", "fire", "theft"], tags: ["tag-comprehensive", "tag-third", "tag-fire"], featured: false, keyFeature: "Government-backed, high reliability", details: { founded: "1952", headquarters: "Cairo, Egypt", claimsTime: "5–7 business days", maxCoverage: "EGP 2,000,000", deductible: "From EGP 500", roadside: "Included", discount: "Up to 15% NCD", medicalCover: "EGP 50,000" }, terms: ["Policy renewable annually with loyalty bonus after 3 years", "Third-party liability covered up to EGP 1.5M per incident", "Windscreen cover included with zero deductible", "24/7 emergency hotline available across Egypt", "Claims submitted online or at any of 40+ branches", "Vehicle inspection required for cars older than 5 years"] },
+      { id: 4, name: "Tharwa Insurance", abbr: "TH", bgColor: "#1B6B3A", textColor: "#FFFFFF", desc: "Competitive pricing with plans tailored especially for new and EV cars.", rateRange: "1.8% – 3.5% of car value", priceFrom: 2100, rating: 3.9, reviews: 1220, coverage: ["third", "fire"], tags: ["tag-third", "tag-fire"], featured: false, keyFeature: "Competitive pricing, especially for new/EV cars", details: { founded: "2008", headquarters: "Cairo — Nasr City", claimsTime: "7–12 business days", maxCoverage: "EGP 900,000", deductible: "From EGP 800", roadside: "Not included", discount: "Up to 8% NCD", medicalCover: "EGP 20,000" }, terms: ["Lowest rates in the market for new vehicles and EVs", "Third-party liability covers up to EGP 800,000 per accident", "Monthly installment payments accepted at no extra charge", "Damage from natural disasters covered under extended policy", "Online policy issuance and renewal available 24/7", "Claims inspector visits within 48 hours of notification"] },
+      { id: 5, name: "Royal Insurance Egypt", abbr: "RI", bgColor: "#6B2D8B", textColor: "#FFFFFF", desc: "Premium service insurer offering add-ons like key insurance and VIP support.", rateRange: "3.2% – 4% of car value", priceFrom: 4200, rating: 4.5, reviews: 2140, coverage: ["comprehensive", "accident", "theft"], tags: ["tag-comprehensive", "tag-accident", "tag-theft"], featured: false, keyFeature: "Offers premium add-ons like key insurance", details: { founded: "2005", headquarters: "Cairo — Zamalek", claimsTime: "2–4 business days", maxCoverage: "EGP 4,000,000", deductible: "From EGP 250", roadside: "Included + towing", discount: "Up to 25% NCD", medicalCover: "EGP 150,000" }, terms: ["Dedicated VIP concierge for high-value vehicle claims", "Replacement vehicle provided within 24 hours of claim", "Agreed value policy — full car value settled without depreciation", "Premium waiver in the event of total write-off or theft", "Key insurance add-on covers lost/stolen/broken car keys", "Optional international travel extension up to 30 days per trip"] },
+      { id: 6, name: "GIG Egypt", abbr: "GG", bgColor: "#C5393A", textColor: "#FFFFFF", desc: "Gulf Insurance Group — known for fast inspections and Gulf-standard coverage.", rateRange: "3% – 4.2% of car value", priceFrom: 2700, rating: 4.4, reviews: 2450, coverage: ["comprehensive", "third", "accident", "theft"], tags: ["tag-comprehensive", "tag-third", "tag-theft"], featured: false, keyFeature: "Known for fast inspections", details: { founded: "2015 (Egypt)", headquarters: "Cairo — Fifth Settlement", claimsTime: "3–5 business days", maxCoverage: "EGP 2,200,000", deductible: "From EGP 450", roadside: "Included", discount: "Up to 15% NCD", medicalCover: "EGP 55,000" }, terms: ["GCC network allows use of insurance while traveling in Gulf states", "Electronic claims submission via mobile app in under 5 minutes", "Fast on-site inspection — typically completed within 24 hours", "Zero excess on the first claim for new policyholders", "Optional 'New Car Replacement' available for vehicles under 2 years", "Comprehensive plan includes natural disaster and sandstorm cover"] },
+      { id: 7, name: "Mohandes Insurance", abbr: "MO", bgColor: "#2E5D34", textColor: "#FFFFFF", desc: "Specialized insurer with engineering-backed risk assessment and strong market reputation.", rateRange: "3.5% – 4.5% of car value", priceFrom: 1900, rating: 4.0, reviews: 1854, coverage: ["third", "fire", "theft"], tags: ["tag-third", "tag-fire", "tag-theft"], featured: false, keyFeature: "Strong market reputation", details: { founded: "1979", headquarters: "Cairo — Heliopolis", claimsTime: "6–10 business days", maxCoverage: "EGP 1,200,000", deductible: "From EGP 750", roadside: "Not included", discount: "Up to 10% NCD", medicalCover: "EGP 25,000" }, terms: ["Competitive premiums tailored for commercial and fleet vehicles", "Engineering inspection included as part of the claims process", "Theft coverage requires police report filed within 24 hours", "Policy renewal grace period of 30 days with no lapse in cover", "Fire damage coverage includes self-ignition and lightning", "Optional personal belongings cover up to EGP 5,000"] },
+      { id: 8, name: "Delta Insurance", abbr: "DI", bgColor: "#1A5276", textColor: "#FFFFFF", desc: "Reliable mid-tier insurer with flexible plans ideal for mid-range budgets.", rateRange: "3% – 4.2% of car value", priceFrom: 2250, rating: 4.1, reviews: 1650, coverage: ["comprehensive", "third", "fire"], tags: ["tag-comprehensive", "tag-third"], featured: false, keyFeature: "Flexible plans for mid-range budgets", details: { founded: "1995", headquarters: "Cairo — Dokki", claimsTime: "5–9 business days", maxCoverage: "EGP 1,500,000", deductible: "From EGP 600", roadside: "Included in select plans", discount: "Up to 12% NCD", medicalCover: "EGP 35,000" }, terms: ["Strong branch network across Delta region and Upper Egypt", "Flood damage covered under optional comprehensive add-on", "Fleet discounts of up to 20% for 3 or more vehicles", "Claims processed at any of 25+ offices nationwide", "Vehicle value assessed by certified independent surveyor", "Personal accident rider available for an additional EGP 200/year"] },
+      { id: 9, name: "MetLife Egypt", abbr: "ML", bgColor: "#0066A1", textColor: "#FFFFFF", desc: "Trusted American brand — strong in life & medical with bundled car insurance options.", rateRange: "3.5% – 5% of car value", priceFrom: 3400, rating: 4.3, reviews: 2988, coverage: ["comprehensive", "accident"], tags: ["tag-comprehensive", "tag-accident"], featured: false, keyFeature: "Strong in life/medical but offers car insurance", details: { founded: "1998 (Egypt)", headquarters: "Cairo — Maadi", claimsTime: "5–8 business days", maxCoverage: "EGP 2,800,000", deductible: "From EGP 600", roadside: "Add-on available", discount: "Up to 12% NCD", medicalCover: "EGP 100,000" }, terms: ["Bundled discounts when combined with MetLife life insurance", "Global coverage available for diplomatic plates and expats", "Direct bank transfer for approved claims within 48 hours", "Dedicated relationship manager for premium policyholders", "Gap coverage for financed/leased vehicles under 3 years", "Annual policy review and premium adjustment available"] }
     ];
 
     let compareList = [];
@@ -1649,24 +1394,20 @@
     }
 
     function buildCard(c) {
-      const tagHTML = c.tags.map(t => {
-        const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
-        return `<span class="tag ${t}">${labels[t]}</span>`;
-      }).join('');
-
+      const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
+      const tagHTML = c.tags.map(t => `<span class="tag ${t}">${labels[t]}</span>`).join('');
       const inCompare = compareList.includes(c.id);
-
       return `
-        <div class="company-card ${c.featured ? 'featured' : ''}" id="card-${c.id}" data-coverage="${c.coverage.join(' ')}">
+        <div class="company-card ${c.featured ? 'featured' : ''}" id="card-${c.id}">
           ${c.featured ? '<div class="featured-badge">Top Rated Partner</div>' : ''}
           <div class="card-body">
-            <div class="company-logo" style="background:${c.bgColor}; color:${c.textColor};">${c.abbr}</div>
+            <div class="company-logo" style="background:${c.bgColor};color:${c.textColor};">${c.abbr}</div>
             <div class="company-info">
               <div class="company-name">${c.name}</div>
               <div class="company-desc">${c.desc}</div>
               <div class="rate-badge">📊 Rate: ${c.rateRange}</div>
               <div class="coverage-tags">${tagHTML}</div>
-              <button class="add-compare-btn ${inCompare ? 'added' : ''}" onclick="toggleCompare(${c.id}, '${c.name}')" id="comparebtn-${c.id}">
+              <button class="add-compare-btn ${inCompare ? 'added' : ''}" onclick="toggleCompare(${c.id},'${c.name}')" id="comparebtn-${c.id}">
                 ${inCompare ? '✓ Added to Compare' : '+ Add to Compare'}
               </button>
             </div>
@@ -1682,42 +1423,24 @@
               <button class="price-cta" onclick="openDetailModal(${c.id})">View Details</button>
             </div>
           </div>
-        </div>
-      `;
-    }
-
-    function renderCards() {
-      document.getElementById('cardsGrid').innerHTML = companies.map(buildCard).join('');
+        </div>`;
     }
 
     function openDetailModal(id) {
       const c = companies.find(x => x.id === id);
-      const tagHTML = c.tags.map(t => {
-        const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
-        return `<span class="tag ${t}" style="font-size:0.75rem;padding:4px 12px;">${labels[t]}</span>`;
-      }).join('');
-
+      const labels = { 'tag-comprehensive': 'Comprehensive', 'tag-third': 'Third Party', 'tag-fire': 'Fire & Theft', 'tag-theft': 'Theft', 'tag-accident': 'Personal Accident' };
+      const tagHTML = c.tags.map(t => `<span class="tag ${t}" style="font-size:0.75rem;padding:4px 12px;">${labels[t]}</span>`).join('');
       document.getElementById('modalBody').innerHTML = `
-        <div class="modal-logo" style="background:${c.bgColor}; color:${c.textColor};">${c.abbr}</div>
+        <div class="modal-logo" style="background:${c.bgColor};color:${c.textColor};">${c.abbr}</div>
         <h2>${c.name}</h2>
         <p class="modal-subtitle">${c.desc}</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0.75rem;">${tagHTML}</div>
-        <div style="background:rgba(197,153,58,0.1);border:1px solid rgba(197,153,58,0.3);border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--gold-dark);font-weight:600;">
-          📊 Rate Range: ${c.rateRange}
-        </div>
+        <div style="background:rgba(197,153,58,0.1);border:1px solid rgba(197,153,58,0.3);border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--gold-dark);font-weight:600;">📊 Rate Range: ${c.rateRange}</div>
         <div style="display:flex;align-items:center;gap:16px;background:var(--cream);padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:1rem;">
-          <div>
-            <div style="color:var(--gold);font-size:1rem;letter-spacing:2px;">${starStr(c.rating)}</div>
-            <div style="font-size:0.78rem;color:var(--text-muted);">${c.reviews.toLocaleString()} reviews</div>
-          </div>
-          <div style="flex:1;text-align:right;">
-            <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Premium from</div>
-            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);">${formatPrice(c.priceFrom)}<span style="font-size:0.85rem;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--text-muted);"> EGP/yr</span></div>
-          </div>
+          <div><div style="color:var(--gold);font-size:1rem;letter-spacing:2px;">${starStr(c.rating)}</div><div style="font-size:0.78rem;color:var(--text-muted);">${c.reviews.toLocaleString()} reviews</div></div>
+          <div style="flex:1;text-align:right;"><div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Premium from</div><div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);">${formatPrice(c.priceFrom)}<span style="font-size:0.85rem;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--text-muted);"> EGP/yr</span></div></div>
         </div>
-        <div style="background:var(--cream);border-radius:8px;padding:12px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--text-muted);">
-          <strong style="color:var(--navy);">✨ Key Feature:</strong> ${c.keyFeature}
-        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:12px 14px;margin-bottom:1rem;font-size:0.85rem;color:var(--text-muted);"><strong style="color:var(--navy);">✨ Key Feature:</strong> ${c.keyFeature}</div>
         <div class="modal-section-title">Policy Details</div>
         <div class="modal-grid">
           <div class="modal-detail"><div class="modal-detail-label">Founded</div><div class="modal-detail-value">${c.details.founded}</div></div>
@@ -1730,42 +1453,24 @@
           <div class="modal-detail"><div class="modal-detail-label">Medical Cover</div><div class="modal-detail-value">${c.details.medicalCover}</div></div>
         </div>
         <div class="modal-section-title">Terms & Conditions</div>
-        <ul class="modal-terms">
-          ${c.terms.map(t => `<li>${t}</li>`).join('')}
-        </ul>
-        <button class="modal-get-btn" onclick="showToast('Redirecting to ${c.name} quote page...')">Get a Quote from ${c.name} →</button>
-      `;
+        <ul class="modal-terms">${c.terms.map(t => `<li>${t}</li>`).join('')}</ul>
+        <button class="modal-get-btn" onclick="showToast('Redirecting to ${c.name} quote page...')">Get a Quote from ${c.name} →</button>`;
       document.getElementById('detailModal').classList.add('open');
     }
 
-    function closeModal(e) {
-      if (e.target === document.getElementById('detailModal')) closeDetailModal();
-    }
-
-    function closeDetailModal() {
-      document.getElementById('detailModal').classList.remove('open');
-    }
-
-    function closeCompareModal(e) {
-      if (e.target === document.getElementById('compareModal')) {
-        document.getElementById('compareModal').classList.remove('open');
-      }
-    }
+    function closeModal(e) { if (e.target === document.getElementById('detailModal')) closeDetailModal(); }
+    function closeDetailModal() { document.getElementById('detailModal').classList.remove('open'); }
+    function closeCompareModal(e) { if (e.target === document.getElementById('compareModal')) document.getElementById('compareModal').classList.remove('open'); }
 
     function toggleCompare(id, name) {
       const idx = compareList.indexOf(id);
       if (idx === -1) {
         if (compareList.length >= 4) { showToast('Max 4 companies to compare at once'); return; }
         compareList.push(id);
-      } else {
-        compareList.splice(idx, 1);
-      }
+      } else { compareList.splice(idx, 1); }
       renderCompareBar();
       const btn = document.getElementById('comparebtn-' + id);
-      if (btn) {
-        btn.classList.toggle('added', compareList.includes(id));
-        btn.textContent = compareList.includes(id) ? '✓ Added to Compare' : '+ Add to Compare';
-      }
+      if (btn) { btn.classList.toggle('added', compareList.includes(id)); btn.textContent = compareList.includes(id) ? '✓ Added to Compare' : '+ Add to Compare'; }
     }
 
     function renderCompareBar() {
@@ -1773,44 +1478,29 @@
       const items = document.getElementById('compareItems');
       if (compareList.length === 0) { bar.classList.remove('show'); return; }
       bar.classList.add('show');
-      items.innerHTML = compareList.map(id => {
-        const c = companies.find(x => x.id === id);
-        return `<div class="compare-pill">${c.name}<button class="compare-pill-remove" onclick="toggleCompare(${id}, '${c.name}')">✕</button></div>`;
-      }).join('');
+      items.innerHTML = compareList.map(id => { const c = companies.find(x => x.id === id); return `<div class="compare-pill">${c.name}<button class="compare-pill-remove" onclick="toggleCompare(${id},'${c.name}')">✕</button></div>`; }).join('');
     }
 
     function openCompareModal() {
       const selected = companies.filter(c => compareList.includes(c.id));
       const rows = [
-        ['Rate (% of Car Value)', c => c.rateRange],
-        ['Premium From', c => formatPrice(c.priceFrom) + ' EGP/yr'],
-        ['Rating', c => c.rating + ' ★'],
-        ['Key Feature', c => c.keyFeature],
-        ['Founded', c => c.details.founded],
-        ['Max Coverage', c => c.details.maxCoverage],
-        ['Deductible', c => c.details.deductible],
-        ['Claims Time', c => c.details.claimsTime],
-        ['Roadside Assist', c => c.details.roadside],
-        ['No-Claim Discount', c => c.details.discount],
-        ['Medical Cover', c => c.details.medicalCover],
+        ['Rate (% of Car Value)', c => c.rateRange], ['Premium From', c => formatPrice(c.priceFrom) + ' EGP/yr'],
+        ['Rating', c => c.rating + ' ★'], ['Key Feature', c => c.keyFeature], ['Founded', c => c.details.founded],
+        ['Max Coverage', c => c.details.maxCoverage], ['Deductible', c => c.details.deductible],
+        ['Claims Time', c => c.details.claimsTime], ['Roadside Assist', c => c.details.roadside],
+        ['No-Claim Discount', c => c.details.discount], ['Medical Cover', c => c.details.medicalCover],
         ['Comprehensive', c => c.coverage.includes('comprehensive') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
         ['Third Party', c => c.coverage.includes('third') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
         ['Theft Cover', c => c.coverage.includes('theft') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
         ['Personal Accident', c => c.coverage.includes('accident') ? '<span class="check-yes">✓ Yes</span>' : '<span class="check-no">✗ No</span>'],
       ];
-
       const thead = `<tr><th>Feature</th>${selected.map(c => `<th style="background:${c.bgColor};">${c.name}</th>`).join('')}</tr>`;
       const tbody = rows.map(([label, fn]) => `<tr><td>${label}</td>${selected.map(c => `<td>${fn(c)}</td>`).join('')}</tr>`).join('');
-
-      document.getElementById('compareTableContainer').innerHTML = `
-        <table class="compare-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>
-      `;
+      document.getElementById('compareTableContainer').innerHTML = `<table class="compare-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
       document.getElementById('compareModal').classList.add('open');
     }
 
-    function updatePrice(el) {
-      document.getElementById('priceDisplay').textContent = parseInt(el.value).toLocaleString('en-EG') + ' EGP';
-    }
+    function updatePrice(el) { document.getElementById('priceDisplay').textContent = parseInt(el.value).toLocaleString('en-EG') + ' EGP'; }
 
     function applyFilters() {
       const coverage = document.getElementById('filterCoverage').value;
@@ -1847,9 +1537,7 @@
       } else {
         grid.innerHTML = filtered.map(buildCard).join('');
       }
-
-      const countEl = document.querySelector('.results-count');
-      countEl.innerHTML = `Showing <strong>${filtered.length} of 9 companies</strong>${filtered.length < 9 ? ' — filtered results' : ' — 40+ policies available'}`;
+      document.querySelector('.results-count').innerHTML = `Showing <strong>${filtered.length} of 9 companies</strong>${filtered.length < 9 ? ' — filtered results' : ' — 40+ policies available'}`;
     }
 
     function resetFilters() {
@@ -1887,7 +1575,6 @@
       showToast('Showing matching policies!');
     }
 
-    renderCards();
     applyFilters();
   </script>
 </body>
