@@ -1056,6 +1056,7 @@
     }
 
     @media (max-width: 768px) {
+
       nav {
         flex-direction: column;
         height: auto;
@@ -1094,6 +1095,14 @@
 
       main {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      /* FIX THE SIDEBAR OVERLAP */
+      .sidebar {
+        position: static;
+        top: unset;
+        width: 100%;
       }
 
       .search-bar {
@@ -1126,16 +1135,32 @@
     }
 
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
+
+      body {
+        overflow-x: hidden;
       }
 
-      .stats-row {
-        grid-template-columns: 1fr;
+      main {
+        padding: 2rem 1rem;
       }
 
-      .stat {
-        border-right: none !important;
+      .sidebar {
+        padding: 1.25rem;
+      }
+
+      .modal {
+        padding: 1.5rem;
+      }
+
+      .compare-bar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      .compare-btn-bar {
+        width: 100%;
       }
     }
   </style>
